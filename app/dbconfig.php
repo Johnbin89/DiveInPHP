@@ -1,7 +1,7 @@
 <?php
 define('DB_SERVER', '***REMOVED***');
 define('DB_USERNAME', '***REMOVED***');
-define('DB_PASSWORD', 'diver');
+define('DB_PASSWORD', '***REMOVED***');
 define('DB_NAME', '***REMOVED***');
 define('DB_PORT', '***REMOVED***');
  
