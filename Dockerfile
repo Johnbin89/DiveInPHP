@@ -4,7 +4,7 @@ COPY . /var/www/html/
 
 
 RUN apt-get update && apt-get install -y git &&\
-    apt-get install php-mysql &&\
+    apt-get install php7.2-mysql &&\
     cd ~ &&\
     curl -sS https://getcomposer.org/installer -o composer-setup.php &&\
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer &&\
