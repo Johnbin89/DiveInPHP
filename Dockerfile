@@ -9,7 +9,9 @@ RUN apt-get update && apt-get install -y git &&\
     curl -sS https://getcomposer.org/installer -o composer-setup.php &&\
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer &&\
     cd /var/www/html/ &&\
-    php /usr/local/bin/composer install
+    php /usr/local/bin/composer install &&\
+    touch /usr/local/etc/php/conf.d/mysqli.ini &&\
+    echo "extension=mysqli;" >> /usr/local/etc/php/conf.d/mysqli.ini
 
 
 EXPOSE 80
