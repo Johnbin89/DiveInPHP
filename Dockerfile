@@ -4,14 +4,14 @@ COPY . /var/www/html/
 
 
 RUN apt-get update && apt-get install -y git &&\
-    #apt-get install php7-mysql &&\
+    apt-get install mysql-client &&\
     cd ~ &&\
     curl -sS https://getcomposer.org/installer -o composer-setup.php &&\
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer &&\
     cd /var/www/html/ &&\
     php /usr/local/bin/composer install &&\
     touch /usr/local/etc/php/conf.d/mysqli.ini &&\
-    echo "extension=mysqli.so" >> /usr/local/etc/php/conf.d/mysqli.ini
+    echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini
 
 
 EXPOSE 80
