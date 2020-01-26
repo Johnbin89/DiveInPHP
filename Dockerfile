@@ -10,7 +10,7 @@ RUN apt-get update && \
     git \
     nano \
     iputils-ping \
-    mysql-client \
+    #mysql-client \
     locales \
 # Configure PHP
     libxml2-dev libfreetype6-dev \
