@@ -1,6 +1,6 @@
 FROM php:7.2-apache
 COPY . /var/www/html/
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &&\
+RUN cd /var/www/html/ &&\
     composer install
 
 EXPOSE 80
