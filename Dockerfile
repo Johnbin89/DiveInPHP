@@ -1,7 +1,6 @@
 FROM php:7.2-apache
 COPY . /var/www/html/
-RUN cd /var/www/html/ &&\
-    composer install
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 EXPOSE 80
 CMD service apache2 start
