@@ -12,6 +12,7 @@ RUN apt-get update && \
     iputils-ping \
     #mysql-client \
     locales \
+    php7.2-fpm \
 # Configure PHP
     libxml2-dev libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -22,8 +23,10 @@ RUN apt-get update && \
 # Configure bash
     #echo 'export LS_OPTIONS="--color=auto"\nalias ls="ls $LS_OPTIONS"\nalias ll="ls $LS_OPTIONS -aGFlh"\nalias l="ls $LS_OPTIONS -FG"' > ~/.bashrc && \
 # Configure Apache & clean
-    a2enmod rewrite && \
     a2enmod ssl && \
+    a2enmod headers && \
+    a2enmod rewrite && \
+    a2enconf php7.2-fpm && \
     apt-get clean && \
     apt-get -y purge \
         libxml2-dev libfreetype6-dev \
