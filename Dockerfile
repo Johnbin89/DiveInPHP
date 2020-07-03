@@ -26,7 +26,7 @@ RUN apt-get update && \
     a2enmod ssl && \
     a2enmod headers && \
     a2enmod rewrite && \
-    a2enconf php7.2-fpm && \
+    a2enconf fpm && \
     apt-get clean && \
     apt-get -y purge \
         libxml2-dev libfreetype6-dev \
@@ -41,7 +41,7 @@ RUN cd ~ &&\
     cd /var/www/html/ &&\
     php /usr/local/bin/composer install &&\
     touch /usr/local/etc/php/conf.d/mysqli.ini &&\
-    echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini
+    echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini && \
     touch /usr/local/etc/php/conf.d/fpm.ini &&\
     echo "extension=fpm" >> /usr/local/etc/php/conf.d/fpm.ini
 
