@@ -18,7 +18,6 @@ RUN apt-get update && \
     libmcrypt-dev \
     libpng-dev && \
     docker-php-ext-install -j$(nproc) mysqli && \
-    docker-php-ext-install -j$(nproc) fpm && \
     #echo 'always_populate_raw_post_data = -1\nmax_execution_time = 240\nmemory_limit = 512M\nmax_input_vars = 1500\nupload_max_filesize = 200M\npost_max_size = 300M' > /usr/local/etc/php/conf.d/typo3.ini && \
 # Configure bash
     #echo 'export LS_OPTIONS="--color=auto"\nalias ls="ls $LS_OPTIONS"\nalias ll="ls $LS_OPTIONS -aGFlh"\nalias l="ls $LS_OPTIONS -FG"' > ~/.bashrc && \
@@ -26,7 +25,10 @@ RUN apt-get update && \
     a2enmod ssl && \
     a2enmod headers && \
     a2enmod rewrite && \
-    a2enconf fpm && \
+    docker-php-source extract \
+    apt-get install -y --no-install-recommends php7.2-fpm &&  \
+    docker-php-source delete && \
+    a2enconf php7.2-fpm && \
     apt-get clean && \
     apt-get -y purge \
         libxml2-dev libfreetype6-dev \
@@ -34,16 +36,15 @@ RUN apt-get update && \
         libmcrypt-dev \
         libpng12-dev && \
     rm -rf /var/lib/apt/lists/* /usr/src/*
- 
+
+
 RUN cd ~ &&\
     curl -sS https://getcomposer.org/installer -o composer-setup.php &&\
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer &&\
     cd /var/www/html/ &&\
     php /usr/local/bin/composer install &&\
     touch /usr/local/etc/php/conf.d/mysqli.ini &&\
-    echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini && \
-    touch /usr/local/etc/php/conf.d/fpm.ini &&\
-    echo "extension=fpm" >> /usr/local/etc/php/conf.d/fpm.ini
+    echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini
 
 EXPOSE 80
 EXPOSE 443
