@@ -22,13 +22,8 @@ RUN apt-get update && \
 # Configure bash
     #echo 'export LS_OPTIONS="--color=auto"\nalias ls="ls $LS_OPTIONS"\nalias ll="ls $LS_OPTIONS -aGFlh"\nalias l="ls $LS_OPTIONS -FG"' > ~/.bashrc && \
 # Configure Apache & clean
-    a2enmod ssl && \
-    a2enmod headers && \
     a2enmod rewrite && \
-    docker-php-source extract \
-    apt-get install -y --no-install-recommends php7.2-fpm &&  \
-    docker-php-source delete && \
-    a2enconf php7.2-fpm && \
+    a2enmod ssl && \
     apt-get clean && \
     apt-get -y purge \
         libxml2-dev libfreetype6-dev \
@@ -36,8 +31,7 @@ RUN apt-get update && \
         libmcrypt-dev \
         libpng12-dev && \
     rm -rf /var/lib/apt/lists/* /usr/src/*
-
-
+ 
 RUN cd ~ &&\
     curl -sS https://getcomposer.org/installer -o composer-setup.php &&\
     php composer-setup.php --install-dir=/usr/local/bin --filename=composer &&\
@@ -45,6 +39,7 @@ RUN cd ~ &&\
     php /usr/local/bin/composer install &&\
     touch /usr/local/etc/php/conf.d/mysqli.ini &&\
     echo "extension=mysqli" >> /usr/local/etc/php/conf.d/mysqli.ini
+
 
 EXPOSE 80
 EXPOSE 443
