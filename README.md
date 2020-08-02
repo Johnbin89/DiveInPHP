@@ -1,7 +1,7 @@
 First Web Application assigned as coursework in a course @ Athens Tech College
 
 
-An intro to Web Applications, where it was required with a team of co-students to select our own project idea and write a web app in _php_ without using a framework.
+An intro to Web Applications, where it was required with a team of co-students to select our own project idea and write a web app in **_php_ without using a framework**.
 
 Among other ideas my suggestions was a web app related to my favourite hobby, where the sky is only a memory, [diving](https://www.flickr.com/photos/giannhsbiniaris/)!  
 What is missing from the diving community in Greece, is a site where all dive operatarors (dive centers) would host their upcoming dive events and divers would be able to search what they are interested into and book their place in.  
