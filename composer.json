@@ -1,6 +1,6 @@
 {
 
-    "name": "DivingWebsite-php",
+    "name": "divingwebsite/php",
     "description": "without a framework",
     "type": "project",
     "require": { "twig/twig": "^3.0" },
